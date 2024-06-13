@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const socket = io('http://127.0.0.1:5000');
+    const socket = io('http://127.0.0.1:5500');
     const progressBar = document.getElementById('progress-bar');
     const message = document.getElementById('message');
     const form = document.getElementById('download-form');
