@@ -1,35 +1,21 @@
-:root {
-    --primary-color: #4CAF50;
-    --primary-hover-color: #45a049;
-    --secondary-color: #008CBA;
-    --secondary-hover-color: #007BB5;
-    --background-color: #f0f0f0;
-    --text-color: #333;
-    --header-color: #c96929;
-    --container-bg-color: #fff;
-    --container-shadow: rgba(0, 0, 0, 0.1);
-    --border-color: #ccc;
-    --progress-bg-color: #ddd;
-}
-
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: var(--container-bg-color);
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--container-shadow);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    color: var(--header-color);
+    color:  #c96929;
 }
 
 form {
@@ -41,14 +27,14 @@ form {
 input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
     padding: 10px;
     font-size: 16px;
-    background-color: var(--primary-color);
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -56,41 +42,45 @@ button {
 }
 
 button:hover {
-    background-color: var(--primary-hover-color);
+    background-color: #45a049;
 }
 
 .progress-container {
     width: 100%;
-    background-color: var(--progress-bg-color);
+    background-color: #ddd;
     margin-top: 20px;
 }
 
 .progress-bar {
     height: 25px;
     width: 0;
+    background-color: #4CAF50;
     text-align: center;
     line-height: 25px;
     color: white;
-    border-radius: 4px;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
-.progress-bar.started {
-    background-color: #A20404; /* Cor inicial */
-}
-
-.progress-bar.halfway {
-    background-color: #ffc400; /* Cor na metade */
-}
-
-.progress-bar.complete {
-    background-color: #20D800; /* Cor quando completado */
-}
-
 
 #message {
     margin-top: 20px;
     text-align: center;
 }
 
-/* Removing unused class */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
