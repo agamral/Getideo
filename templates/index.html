@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download de Vídeos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Download de Vídeos</h1>
+        <form id="download-form" action="/download" method="post">
+            <label for="url">Link do Vídeo</label>
+            <input type="text" id="url" name="url" placeholder="Link do Vídeo" aria-label="Link do Vídeo">
+            <button type="submit">Download</button>
+        </form>
+        <div id="progress-container" class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <footer>
+        <p>Tools used <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer">Flask</a>, 
+        <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">yt-dlp</a>, 
+        <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio Code</a>, 
+        and <a href="https://www.openai.com/chatgpt" target="_blank" rel="noopener noreferrer">ChatGPT</a>.</p>
+        <p>Made with ❤️ by Aguma</p>
+    </footer>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
