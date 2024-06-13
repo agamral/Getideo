@@ -1,30 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const socket = io('http://127.0.0.1:5500');
+    const socket = io('http://127.0.0.1:5000');
     const progressBar = document.getElementById('progress-bar');
     const message = document.getElementById('message');
     const form = document.getElementById('download-form');
     let downloadedFile = '';
 
+    // Evento de progresso do download
     socket.on('progress', function(data) {
         const percentComplete = data.progress;
         progressBar.style.width = percentComplete;
         message.innerText = "Progresso: " + percentComplete;
     });
 
+    // Evento de download completo
     socket.on('download_complete', function(data) {
         message.innerText = data.message;
         downloadedFile = data.filename;
-        
-        // Abrir automaticamente a pasta de downloads
         openDownloadFolder(downloadedFile);
     });
 
+    // Envio do formulário de download
     form.onsubmit = async function(event) {
         event.preventDefault();
         const url = document.querySelector('input[name="url"]').value;
 
+        // Resetar a barra de progresso
+        progressBar.style.width = '0';
         message.innerText = "Download iniciado! Por favor, aguarde...";
 
+        // Requisição para iniciar o download
         fetch('http://127.0.0.1:5000/download', {
             method: 'POST',
             headers: {
@@ -46,20 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
+    // Função para abrir a pasta de downloads
     function openDownloadFolder(filename) {
-        // Criar um link oculto
         const link = document.createElement('a');
         link.style.display = 'none';
         document.body.appendChild(link);
 
-        // Definir o URL do link para o endpoint do Flask que serve o arquivo
         link.href = `/file/${encodeURIComponent(filename)}`;
         link.setAttribute('download', '');
-
-        // Simular o clique no link para abrir a pasta de downloads
         link.click();
 
-        // Limpar o link depois que ele for utilizado
         document.body.removeChild(link);
     }
 });
